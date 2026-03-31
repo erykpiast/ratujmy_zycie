@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stowarzyszenie Ratujmy Życie — Pierwsza pomoc ratuje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1a3f;
+  --navy-80: rgba(10,26,63,0.8);
+  --navy-light: #142d5a;
+  --blue-pale: #e8edf5;
+  --white: #fff;
+  --off-white: #f7f8fa;
+  --gray-100: #f1f3f5;
+  --gray-200: #e2e5e9;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-800: #1f2937;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Outfit', sans-serif; color: var(--gray-800); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+.topbar { background: var(--navy); }
+.topbar-inner {
+  max-width: 1200px; margin: 0 auto; padding: 9px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: rgba(255,255,255,0.65);
+}
+.topbar a { color: rgba(255,255,255,0.85); text-decoration: none; }
+.topbar a:hover { color: var(--white); }
+.topbar-links { display: flex; gap: 20px; }
+
+nav { background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 32px;
+  height: 70px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo img { height: 44px; }
+.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.nav-links a { text-decoration: none; color: var(--gray-500); font-size: 15px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--navy) !important; color: var(--white) !important;
+  padding: 10px 26px !important; border-radius: 6px; font-weight: 600 !important;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--navy-light) !important; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; }
+.mobile-menu { display: none; background: var(--white); padding: 12px 32px 20px; border-bottom: 1px solid var(--gray-200); }
+.mobile-menu.open { display: block; }
+.mobile-menu a { display: block; padding: 12px 0; color: var(--gray-800); text-decoration: none; font-size: 16px; font-weight: 500; border-bottom: 1px solid var(--gray-100); }
+
+/* ── HERO ── */
+.hero { position: relative; min-height: 560px; display: flex; align-items: flex-end; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: url('photos/training_2.jpg') center 40%/cover; }
+.hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,26,63,0.85) 0%, rgba(10,26,63,0.3) 60%, rgba(10,26,63,0.15) 100%); }
+.hero-inner {
+  position: relative; z-index: 1; width: 100%;
+  max-width: 1200px; margin: 0 auto; padding: 0 32px 64px;
+}
+.hero h1 { font-size: 44px; font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 16px; max-width: 640px; }
+.hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 520px; line-height: 1.7; margin-bottom: 32px; font-weight: 400; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: 6px; text-decoration: none;
+  font-weight: 600; font-size: 15px; transition: all .2s; border: none; cursor: pointer;
+}
+.btn-white { background: var(--white); color: var(--navy); }
+.btn-white:hover { background: var(--gray-100); }
+.btn-ghost { background: rgba(255,255,255,0.12); color: var(--white); border: 1px solid rgba(255,255,255,0.25); }
+.btn-ghost:hover { background: rgba(255,255,255,0.2); }
+.btn-navy { background: var(--navy); color: var(--white); }
+.btn-navy:hover { background: var(--navy-light); }
+.btn-outline { background: none; color: var(--navy); border: 1.5px solid var(--gray-200); }
+.btn-outline:hover { border-color: var(--navy); }
+
+/* ── STATS ── */
+.stats { background: var(--navy); }
+.stats-inner {
+  max-width: 1200px; margin: 0 auto; padding: 44px 32px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center;
+}
+.stat-num { font-size: 36px; font-weight: 800; color: var(--white); }
+.stat-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; font-weight: 400; }
+
+/* ── SECTIONS ── */
+.section { padding: 88px 32px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-head { margin-bottom: 48px; }
+.section-head h2 { font-size: 32px; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.section-head p { font-size: 16px; color: var(--gray-500); max-width: 540px; line-height: 1.7; }
+
+/* ── ABOUT ── */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.about-text { font-size: 16px; line-height: 1.85; color: var(--gray-500); }
+.about-box {
+  background: var(--navy); border-radius: 16px; padding: 36px;
+  color: var(--white); position: relative; overflow: hidden;
+}
+.about-box::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: rgba(255,255,255,0.06); pointer-events: none;
+}
+.about-box h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; position: relative; }
+.about-box p { font-size: 15px; line-height: 1.75; opacity: 0.8; position: relative; }
+.about-box-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; position: relative; }
+.about-box-stat { text-align: center; }
+.about-box-stat strong { display: block; font-size: 32px; font-weight: 800; color: var(--white); }
+.about-box-stat span { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ── TEAM ── */
+.team-bg { background: var(--off-white); }
+.team-photo {
+  width: 100%; aspect-ratio: 21/9; object-fit: cover; object-position: center 10%;
+  border-radius: 12px; margin-bottom: 36px;
+}
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.team-card { background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200); }
+.team-card img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: top; }
+.team-card-body { padding: 16px 20px; }
+.team-card-body h3 { font-size: 16px; font-weight: 700; color: var(--navy); }
+.team-card-body p { font-size: 13px; color: var(--gray-400); margin-top: 2px; }
+
+/* ── SERVICES ── */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card {
+  background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px;
+  padding: 28px 24px; transition: border-color .3s, box-shadow .3s;
+}
+.service-card:hover { border-color: var(--navy); box-shadow: 0 4px 16px rgba(10,26,63,0.06); }
+.service-icon {
+  width: 48px; height: 48px; border-radius: 10px; background: var(--blue-pale);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.service-icon svg { width: 22px; height: 22px; stroke: var(--navy); fill: none; }
+.service-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.service-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
+
+/* ── GALLERY ── */
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; border-radius: 12px; overflow: hidden; }
+.gallery-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+
+/* ── CTA ── */
+.cta { background: var(--navy); padding: 64px 32px; text-align: center; }
+.cta h2 { font-size: 28px; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+.cta p { color: rgba(255,255,255,0.65); font-size: 16px; margin-bottom: 28px; max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+
+/* ── CONTACT ── */
+.contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.contact-card { background: var(--off-white); padding: 28px 24px; border-radius: 12px; border: 1px solid var(--gray-100); }
+.contact-card svg { width: 24px; height: 24px; stroke: var(--navy); fill: none; margin-bottom: 14px; }
+.contact-card h3 { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray-400); margin-bottom: 8px; }
+.contact-card p { font-size: 15px; color: var(--navy); line-height: 1.5; }
+.contact-card a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gray-200); }
+.contact-card a:hover { border-color: var(--navy); }
+
+/* ── FOOTER ── */
+footer { background: var(--navy); padding: 44px 32px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo img { height: 32px; }
+.footer-nav { display: flex; gap: 24px; }
+.footer-nav a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; font-weight: 500; transition: color .2s; }
+.footer-nav a:hover { color: var(--white); }
+.footer-socials { display: flex; gap: 8px; }
+.footer-socials a {
+  width: 36px; height: 36px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center; transition: background .2s;
+}
+.footer-socials a:hover { background: rgba(255,255,255,0.05); }
+.footer-socials svg { fill: var(--white); width: 14px; height: 14px; }
+
+/* ── FADE ── */
+.fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.fade.v { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .team-grid, .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+  .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
+  .footer-nav { flex-wrap: wrap; justify-content: center; }
+}
+@media (max-width: 600px) {
+  .hero h1 { font-size: 32px; }
+  .hero { min-height: 480px; }
+  .stats-inner { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .section-head h2 { font-size: 26px; }
+  .topbar { display: none; }
+  .team-photo { aspect-ratio: 16/9; }
+  .section { padding: 64px 20px; }
+  .hero-inner, .nav-inner, .stats-inner, .cta, footer { padding-left: 20px; padding-right: 20px; }
+  .mobile-menu { padding: 12px 20px 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-links">
+      <a href="tel:+48655121234">+48 65 512 12 34</a>
+      <a href="mailto:kontakt@ratujmyzycie.pl">kontakt@ratujmyzycie.pl</a>
+    </div>
+    <span>Słupca · Poznań</span>
+  </div>
+</div>
+
+<nav id="nb">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="logo/logo_light.png" alt="Ratujmy Życie"></a>
+    <ul class="nav-links">
+      <li><a href="#o-nas">O nas</a></li>
+      <li><a href="#zespol">Zespół</a></li>
+      <li><a href="#szkolenia">Szkolenia</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a1a3f" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu">
+    <a href="#o-nas" onclick="this.parentElement.classList.remove('open')">O nas</a>
+    <a href="#zespol" onclick="this.parentElement.classList.remove('open')">Zespół</a>
+    <a href="#szkolenia" onclick="this.parentElement.classList.remove('open')">Szkolenia</a>
+    <a href="#galeria" onclick="this.parentElement.classList.remove('open')">Galeria</a>
+    <a href="#kontakt" onclick="this.parentElement.classList.remove('open')">Kontakt</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner fade">
+    <h1>Pierwsza pomoc ratuje życie</h1>
+    <p>Szkolimy, wspieramy i&nbsp;działamy dla tych, którzy potrzebują pomocy w&nbsp;chwilach, gdy liczy się każda sekunda.</p>
+    <div class="hero-btns">
+      <a href="#kontakt" class="btn btn-white">Skontaktuj się</a>
+      <a href="#szkolenia" class="btn btn-ghost">Nasze szkolenia</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner fade">
+    <div><div class="stat-num">20+</div><div class="stat-label">Lat doświadczenia</div></div>
+    <div><div class="stat-num">500+</div><div class="stat-label">Przeszkolonych osób</div></div>
+    <div><div class="stat-num">50+</div><div class="stat-label">Zrealizowanych projektów</div></div>
+    <div><div class="stat-num">4</div><div class="stat-label">Certyfikowanych instruktorów</div></div>
+  </div>
+</div>
+
+<section class="section" id="o-nas">
+  <div class="section-inner">
+    <div class="section-head fade"><h2>Kim jesteśmy</h2></div>
+    <div class="about-grid">
+      <div class="about-text fade">
+        <p><strong>Stowarzyszenie na Rzecz Pomocy Ofiarom Wypadków Komunikacyjnych i Zdarzeń Losowych „Ratujmy Życie"</strong></p>
+        <br>
+        <p>Jesteśmy organizacją pozarządową założoną w roku 2024. Od tego czasu wspieramy na terenie Słupcy i powiatu słupeckiego ofiary wypadków komunikacyjnych i zdarzeń losowych. Dzięki pasji ratowników medycznych, strażaków ochotników, wolontariuszom i wielu osobom Stowarzyszenie „Ratujmy Życie" przez ostatnie dwie dekady realizowała projekty, które przyczyniły się i przyczyniają do poprawy bezpieczeństwa w miejscu zamieszkania — zwiększenie dostępu do szybkiej defibrylacji.</p>
+      </div>
+      <div class="about-box fade" style="transition-delay:.1s">
+        <h3>Nasza misja</h3>
+        <p>Wierzymy, że wiedza z zakresu pierwszej pomocy powinna być powszechna — aby w sytuacji zagrożenia życia każdy wiedział, jak zareagować.</p>
+        <div class="about-box-stats">
+          <div class="about-box-stat"><strong>20+</strong><span>Lat doświadczenia</span></div>
+          <div class="about-box-stat"><strong>500+</strong><span>Przeszkolonych</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section team-bg" id="zespol">
+  <div class="section-inner">
+    <div class="section-head fade"><h2>Nasz zespół</h2><p>Eksperci ratownictwa, pierwszej pomocy, strażacy, policjanci oraz instruktorzy pierwszej pomocy.</p></div>
+    <img class="team-photo fade" src="photos/team_1.jpeg" alt="Zespół Ratujmy Życie">
+    <div class="team-grid fade" style="transition-delay:.1s">
+      <div class="team-card">
+        <img src="photos/team_4.jpg" alt="Maciej">
+        <div class="team-card-body"><h3>Maciej</h3><p>Instruktor / Ratownik</p></div>
+      </div>
+      <div class="team-card">
+        <img src="photos/team_4.png" alt="Kamila">
+        <div class="team-card-body"><h3>Kamila</h3><p>Instruktorka</p></div>
+      </div>
+      <div class="team-card">
+        <img src="photos/team_5.png" alt="Kamila i Zuza">
+        <div class="team-card-body"><h3>Kamila i Zuza</h3><p>Instruktorki</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="szkolenia">
+  <div class="section-inner">
+    <div class="section-head fade"><h2>Nasze szkolenia</h2><p>Edukacja w zakresie ratowania zdrowia i życia, ze szczególnym uwzględnieniem szkoleń z pierwszej pomocy.</p></div>
+    <div class="services-grid">
+      <div class="service-card fade">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Resuscytacja (CPR)</h3>
+        <p>Nauka uciskania klatki piersiowej i sztucznego oddychania na profesjonalnych fantomach.</p>
+      </div>
+      <div class="service-card fade" style="transition-delay:.08s">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Obsługa AED</h3>
+        <p>Praktyczna nauka użycia automatycznego defibrylatora zewnętrznego.</p>
+      </div>
+      <div class="service-card fade" style="transition-delay:.16s">
+        <div class="service-icon"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Pierwsza pomoc</h3>
+        <p>Kompleksowe szkolenia obejmujące postępowanie przy urazach, krwotokach i zadławieniach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="galeria" style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="section-head fade"><h2>Galeria</h2></div>
+    <div class="gallery-grid fade">
+      <img src="photos/training_1.jpg" alt="CPR" style="object-position: top">
+      <img src="photos/training_2.jpg" alt="Szkolenie grupowe">
+      <img src="photos/training_3.jpg" alt="AED">
+      <img src="photos/training_4.jpg" alt="Praktyka">
+    </div>
+  </div>
+</section>
+
+<div class="cta fade">
+  <h2>Naucz się ratować życie</h2>
+  <p>Umiejętność udzielania pierwszej pomocy może uratować komuś życie.</p>
+  <a href="#kontakt" class="btn btn-white">Umów szkolenie</a>
+</div>
+
+<section class="section" id="kontakt">
+  <div class="section-inner">
+    <div class="section-head fade"><h2>Kontakt</h2><p>Napisz, zadzwoń lub odwiedź nas w biurze.</p></div>
+    <div class="contact-grid fade">
+      <div class="contact-card">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        <h3>E-mail</h3>
+        <p><a href="mailto:kontakt@ratujmyzycie.pl">kontakt@ratujmyzycie.pl</a></p>
+      </div>
+      <div class="contact-card">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <h3>Telefon</h3>
+        <p><a href="tel:+48655121234">+48 65 512 12 34</a></p>
+      </div>
+      <div class="contact-card">
+        <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <h3>Biuro</h3>
+        <p>Słupca, Poznańska 18<br>Poznań, Norwida 14</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="logo/logo_dark.png" alt="Ratujmy Życie"></div>
+    <div class="footer-nav">
+      <a href="#o-nas">O nas</a><a href="#zespol">Zespół</a><a href="#szkolenia">Szkolenia</a><a href="#galeria">Galeria</a><a href="#kontakt">Kontakt</a>
+    </div>
+    <div class="footer-socials">
+      <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
