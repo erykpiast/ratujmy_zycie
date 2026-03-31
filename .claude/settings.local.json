@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Agent",
+      "Skill",
+      "NotebookEdit",
+      "mcp__claude_ai_Figma",
+      "mcp__claude_ai_Linear",
+      "mcp__claude_ai_Notion",
+      "mcp__claude_ai_Sentry",
+      "mcp__claude_ai_Slack",
+      "mcp__blueberry",
+      "Bash(python3:*)",
+      "Bash(gh pr:*)",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true
+}
