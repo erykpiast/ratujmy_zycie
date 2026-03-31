@@ -57,8 +57,14 @@ nav { background: var(--white); border-bottom: 1px solid var(--gray-200); positi
 
 /* ── HERO ── */
 .hero { position: relative; min-height: 560px; display: flex; align-items: flex-end; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background: url('photos/training_2.jpg') center 40%/cover; }
-.hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,26,63,0.85) 0%, rgba(10,26,63,0.3) 60%, rgba(10,26,63,0.15) 100%); }
+.hero-bg { position: absolute; inset: 0; }
+.hero-bg img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+.hero-bg img.active { opacity: 1; }
+.hero-bg::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to top, rgba(10,26,63,0.85) 0%, rgba(10,26,63,0.3) 60%, rgba(10,26,63,0.15) 100%); }
 .hero-inner {
   position: relative; z-index: 1; width: 100%;
   max-width: 1200px; margin: 0 auto; padding: 0 32px 64px;
@@ -242,7 +248,12 @@ footer { background: var(--navy); padding: 44px 32px; }
 </nav>
 
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <img src="photos/training_2.jpg" alt="" class="active">
+    <img src="photos/training_3.jpg" alt="">
+    <img src="photos/training_6.jpg" alt="">
+    <img src="photos/training_7.jpg" alt="">
+  </div>
   <div class="hero-inner fade">
     <h1>Pierwsza pomoc ratuje życie</h1>
     <p>Szkolimy, wspieramy i&nbsp;działamy dla tych, którzy potrzebują pomocy w&nbsp;chwilach, gdy liczy się każda sekunda.</p>
@@ -386,6 +397,15 @@ const io = new IntersectionObserver(es => {
   es.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+// Hero carousel
+const slides = document.querySelectorAll('.hero-bg img');
+let current = 0;
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}, 5000);
 </script>
 </body>
 </html>
