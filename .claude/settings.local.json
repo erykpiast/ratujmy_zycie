@@ -23,7 +23,11 @@
       "Bash(gh pr:*)",
       "Bash(echo \"EXIT:$?\")",
       "Bash(git checkout:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(claude plugins:*)",
+      "Bash(claude plugin:*)"
     ]
   },
   "enableAllProjectMcpServers": true
